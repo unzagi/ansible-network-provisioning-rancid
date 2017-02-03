@@ -10,8 +10,6 @@ See https://atlas.hashicorp.com/unzagi/boxes/ubuntu
 
 Simon Brooks simon@simon-brooks.co.uk
 
-This box is designed to work with GNS3 and a specific vagrant file located at https://bitbucket.org/unzagi/ansible-network-provisioning-rancid.
-
 ```Software
 
 Added Gnome desktop via sudo apt-get install xorg gnome-core gnome-system-tools gnome-app-install
