@@ -1,0 +1,76 @@
+!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router-%h
+!
+ip cef
+!
+enable enable secret 0 Cisco123
+!
+!
+! Add the default admin username
+username admin privilege 15 secret 0 Cisco123admin
+!
+!
+! Add the rancid account
+username rancid privilege 15 secret 0 Rancid123
+ip domain-name brooksy.lab
+!
+banner motd ^C
+This is LAB ROUTER %h
+^C
+!
+!
+no ip domain-lookup
+no ip icmp rate-limit unreachable
+ip tcp synwait 5
+no cdp log mismatch duplex
+!
+!
+!
+! Set the fa0/0 Interface inside the 192.168.4.0/24 Subnet
+!
+interface l0
+ip address %h.%h.%h.%h 255.255.255.255
+
+interface fa0/0
+ip address 192.168.4.%h 255.255.255.0
+no shutdown 
+!
+
+router ospf 1
+router-id %h.%h.%h.%h
+network %h.%h.%h.%h 0.0.0.0 area 0
+network 192.168.4.0 0.0.0.255 area 0
+!
+!
+snmp-server community labpublic RO
+snmp-server community labprivate RW
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+ privilege level 15
+ no login
+line aux 0
+ exec-timeout 0 0
+ logging synchronous
+ privilege level 15
+ no login
+ line vty 0 4
+ logging synchronous
+ login local
+ transport input all
+line vty 5
+ logging synchronous
+ login
+line vty 6 15
+ login
+!
+!
+end

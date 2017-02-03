@@ -1,0 +1,35 @@
+!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router-%h
+!
+ip cef
+!
+
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+ privilege level 15
+ no login
+line aux 0
+ exec-timeout 0 0
+ logging synchronous
+ privilege level 15
+ no login
+ line vty 0 4
+ logging synchronous
+ login local
+ transport input all
+line vty 5
+ logging synchronous
+ login
+line vty 6 15
+ login
+!
+!
+end
