@@ -17,11 +17,6 @@ Vagrant.configure("2") do |config|
       host: host,
       auto_correct: true
   end
-  
-  # Sync between the ansible folder in the VM and the 'sites' directory
-  config.vm.synced_folder "ansible", "/etc/ansible", mount_options: ["fmode=666"]
-  # Sync between the ansible folder in the VM and the 'configs' directory
-  config.vm.synced_folder "output", "/etc/ansible/output"
 
   forward_port[3389,3380] # xrdp (RDP)
  
