@@ -41,6 +41,7 @@ ip address %h.%h.%h.%h 255.255.255.255
 interface fa1/0
 description *** Interface facing Cloud to Virtual Host ***
 ip address 10.0.1.1 255.255.255.0
+duplex full
 no shutdown 
 !
 !
@@ -49,6 +50,7 @@ no shutdown
 interface fa0/0
 description *** Interface facing 192.168.4.0/24 Network ***
 ip address 192.168.4.%h 255.255.255.0
+duplex full
 no shutdown
 !
 router ospf 1
