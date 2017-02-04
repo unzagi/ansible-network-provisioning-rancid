@@ -7,7 +7,7 @@ hostname Gateway-Router-%h
 !
 ip cef
 !
-enable enable secret 0 Cisco123
+enable secret 0 Cisco123
 !
 !
 ! Add the default admin username
